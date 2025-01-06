@@ -15,7 +15,6 @@ describe('Fungsi luas()', () => {
   });
 });
 
-/*
 describe('POST /hitung-luas', () => {
   test('Mengembalikan hasil luas yang benar', async () => {
     const response = await request(app)
@@ -35,4 +34,3 @@ describe('POST /hitung-luas', () => {
     expect(response.body.error).toBe('Invalid input');
   });
 });
-*/

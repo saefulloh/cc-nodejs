@@ -31,9 +31,11 @@ app.post('/hitung-luas', (req, res) => {
 });
 
 // Start the server
+/*
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+*/
 
 module.exports = app;
 module.exports.luas = luas; // Ekspor fungsi untuk unit testing
