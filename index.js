@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 // Route utama
 app.get('/', (req, res) => {
-  res.send('Hello World! Ayo belajar CC.');
+  res.send('Hello World! Ayo belajar CC. trigger action unit test');
 });
 
 // Fungsi untuk menghitung luas persegi panjang
