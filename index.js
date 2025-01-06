@@ -6,63 +6,27 @@ const port = 3000;
 // Middleware
 app.use(bodyParser.json());
 
+// Route utama
 app.get('/', (req, res) => {
-  res.send('Hello World! Ayo belajar CC.')
-})
-
-// Data dummy
-let classes = [
-  { id: 1, nama_kelas: 'Matematika' },
-  { id: 2, nama_kelas: 'Fisika' }
-];
-
-// READ - Get all classes
-app.get('/classes', (req, res) => {
-  res.json(classes);
+  res.send('Hello World! Ayo belajar CC.');
 });
 
-// READ - Get a single class by ID
-app.get('/classes/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const kelas = classes.find(c => c.id === id);
-  if (kelas) {
-    res.json(kelas);
-  } else {
-    res.status(404).send('Class not found');
+// Fungsi untuk menghitung luas persegi panjang
+function luas(length, width) {
+  if (typeof length !== 'number' || typeof width !== 'number' || length <= 0 || width <= 0) {
+    throw new Error('Invalid input');
   }
-});
+  return length * width;
+}
 
-// CREATE - Add a new class
-app.post('/classes', (req, res) => {
-  const newClass = {
-    id: classes.length + 1,
-    nama_kelas: req.body.nama_kelas
-  };
-  classes.push(newClass);
-  res.status(201).json(newClass);
-});
-
-// UPDATE - Update a class by ID
-app.put('/classes/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const kelas = classes.find(c => c.id === id);
-  if (kelas) {
-    kelas.nama_kelas = req.body.nama_kelas;
-    res.json(kelas);
-  } else {
-    res.status(404).send('Class not found');
-  }
-});
-
-// DELETE - Delete a class by ID
-app.delete('/classes/:id', (req, res) => {
-  const id = parseInt(req.params.id);
-  const index = classes.findIndex(c => c.id === id);
-  if (index !== -1) {
-    classes.splice(index, 1);
-    res.status(204).send();
-  } else {
-    res.status(404).send('Class not found');
+// Endpoint untuk menghitung luas persegi panjang
+app.post('/hitung-luas', (req, res) => {
+  try {
+    const { length, width } = req.body;
+    const area = luas(length, width);
+    res.json({ area });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 
@@ -70,3 +34,6 @@ app.delete('/classes/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+module.exports = app;
+module.exports.luas = luas; // Ekspor fungsi untuk unit testing
