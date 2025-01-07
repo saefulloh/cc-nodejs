@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Middleware
+// Middleware komentar testing
 app.use(bodyParser.json());
 
 // Route utama
