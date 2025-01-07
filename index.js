@@ -9,7 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // Koneksi ke MongoDB
-mongoose.connect('mongodb://mongo:SyKAXdMzuMZsHVQivbxBqjpoawowKFhU@junction.proxy.rlwy.net:20922', {
+mongoose.connect('mongodb://mongo:SyKAXdMzuMZsHVQivbxBqjpoawowKFhU@mongodb.railway.internal:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
