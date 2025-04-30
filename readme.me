@@ -12,3 +12,54 @@ CREATE TABLE siswa (
 
 INSERT INTO `sekolah`.`siswa` (`no_induk_siswa`, `nama`, `alamat`, `tanggal_lahir`) VALUES ('001', 'Rifai', 'Bondolharjo', '1996-04-30');
 INSERT INTO `sekolah`.`siswa` (`no_induk_siswa`, `nama`, `alamat`, `tanggal_lahir`) VALUES ('002', 'Fauzan', 'Banjarnegara', '1990-03-10');
+
+
+Setelah setup codingan di server ec2 akses api 
+
+GET {endpoint.domain.serverec2}/siswa
+
+Contoh hasilnya : 
+[
+  {
+    "id": 1,
+    "no_induk_siswa": "001",
+    "nama": "Rifai",
+    "alamat": "Bondolharjo",
+    "tanggal_lahir": "1996-04-29T17:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "no_induk_siswa": "002",
+    "nama": "Fauzan",
+    "alamat": "Banjarnegara",
+    "tanggal_lahir": "1990-03-09T17:00:00.000Z"
+  }
+]
+
+CURL untuk testing
+
+curl http://localhost:3000/siswa
+
+curl http://localhost:3000/siswa/1
+
+curl -X POST http://localhost:3000/siswa \
+  -H "Content-Type: application/json" \
+  -d '{
+    "no_induk_siswa": "12345",
+    "nama": "Andi Saputra",
+    "alamat": "Jl. Merdeka No.10",
+    "tanggal_lahir": "2005-08-15"
+}'
+
+curl -X PUT http://localhost:3000/siswa/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "no_induk_siswa": "12345",
+    "nama": "Andi S.",
+    "alamat": "Jl. Sudirman",
+    "tanggal_lahir": "2005-08-15"
+}'
+
+curl -X DELETE http://localhost:3000/siswa/1
+
+
