@@ -1,6 +1,7 @@
 Nodejs - ExpressJS
 
-Table siswa :
+CREATE DATABASE `sekolah`;
+
 CREATE TABLE siswa (
     id INT AUTO_INCREMENT PRIMARY KEY,
     no_induk_siswa VARCHAR(50) NOT NULL,
@@ -8,3 +9,6 @@ CREATE TABLE siswa (
     alamat TEXT,
     tanggal_lahir DATE
 );
+
+INSERT INTO `sekolah`.`siswa` (`no_induk_siswa`, `nama`, `alamat`, `tanggal_lahir`) VALUES ('001', 'Rifai', 'Bondolharjo', '1996-04-30');
+INSERT INTO `sekolah`.`siswa` (`no_induk_siswa`, `nama`, `alamat`, `tanggal_lahir`) VALUES ('002', 'Fauzan', 'Banjarnegara', '1990-03-10');
